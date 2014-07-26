@@ -9,11 +9,12 @@ getCharactersByOffset = (string, offset = 0) ->
   characters = []
   for c, index in arr by 2
     characters.push arr[index+offset]*1
-  return characters # is an Array
+  return characters # returns an Array
 
 
 sum = (arr) ->
-  return arr.reduce (cumulation, thisNumber) -> cumulation + thisNumber # is a Number
+  # returns a Number
+  return arr.reduce (cumulation, thisNumber) -> cumulation + thisNumber
 
 
 sumTwoDigits = (number) ->
@@ -21,7 +22,7 @@ sumTwoDigits = (number) ->
   totalForThisNumber = 0
   for singleNumber in splitNumber
     totalForThisNumber += parseInt singleNumber, 10
-  return totalForThisNumber # is a Number
+  return totalForThisNumber # returns a Number
 
 
 doubleThenSum = (arr) ->
@@ -29,7 +30,7 @@ doubleThenSum = (arr) ->
   for d in arr
     doubled = d*2
     total += (sumTwoDigits doubled)
-  return total # is a Number
+  return total # returns a Number
 
 
 validateLuhnChecksum = (cardNumber) ->
@@ -37,7 +38,7 @@ validateLuhnChecksum = (cardNumber) ->
   oddDigits = getCharactersByOffset digits
   evenDigits = getCharactersByOffset digits, 1
   checksum = (sum(oddDigits)) + (doubleThenSum(evenDigits))
-  return checksum % 10 is 0 # is True or False
+  return checksum % 10 is 0 # returns True or False
 
 console.log 'invalid example', validateLuhnChecksum '4552 7204 1224 5677'
 console.log 'valid example', validateLuhnChecksum '4552 7204 1234 5677'
