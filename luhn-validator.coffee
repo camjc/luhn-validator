@@ -13,17 +13,14 @@ getCharactersByOffset = (string, offset = 0) ->
 
 
 sum = (arr) ->
-  total = 0
-  for d in arr
-    total += d
-  return total # is a Number
+  return arr.reduce (cumulation, thisNumber) -> cumulation + thisNumber # is a Number
 
 
 sumTwoDigits = (number) ->
   splitNumber = number.toString().split ''
   totalForThisNumber = 0
   for singleNumber in splitNumber
-    totalForThisNumber += singleNumber*1
+    totalForThisNumber += parseInt singleNumber, 10
   return totalForThisNumber # is a Number
 
 
@@ -44,7 +41,7 @@ validateLuhnChecksum = (cardNumber) ->
 
 console.log 'invalid example', validateLuhnChecksum '4552 7204 1224 5677'
 console.log 'valid example', validateLuhnChecksum '4552 7204 1234 5677'
-###console.log 'valid', validateLuhnChecksum '1111111111111117'
+console.log 'valid', validateLuhnChecksum '1111111111111117'
 console.log 'valid', validateLuhnChecksum '1111222233334444'
 console.log 'valid', validateLuhnChecksum '1234567812341679'
-console.log 'valid', validateLuhnChecksum '4408041234567893'###
+console.log 'valid', validateLuhnChecksum '4408041234567893'
